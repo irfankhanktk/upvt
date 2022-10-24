@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   userInfo: null,
+  interests:[],
 }
 
 export const userSlice = createSlice({
@@ -11,8 +12,8 @@ export const userSlice = createSlice({
     setUserInfo: (state, action) => {
       state.userInfo = action.payload
     },
-    demoAsync: (state, action) => {
-      state.userInfo = action.payload
+    setInterests: (state, action) => {
+      state.interests = action.payload
     },
   },
 })

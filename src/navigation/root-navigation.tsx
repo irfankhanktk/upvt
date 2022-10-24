@@ -10,7 +10,9 @@ import RootStackParamList from '../types/navigation-types/root-stack';
 import Home from '../screens/home';
 import AddTask from '../screens/add-task';
 import Login from '../screens/login';
-import Signup from '../screens/signup';
+import SignupPersonal from '../screens/signup-personal-info';
+import SignupPreferences from '../screens/signup-preferences';
+import SignupInterest from '../screens/signup-interest';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -28,7 +30,9 @@ export const RootNavigator = () => {
         
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="SignupPersonal" component={SignupPersonal} />
+        <Stack.Screen name="SignupPreferences" component={SignupPreferences} />
+        <Stack.Screen name="SignupInterest" component={SignupInterest} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="AddTask" component={AddTask} />
       </Stack.Navigator>

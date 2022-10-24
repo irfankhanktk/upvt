@@ -38,14 +38,16 @@ const PrimaryInput = (props: props) => {
 export default React.memo(PrimaryInput)
 const styles = StyleSheet.create({
     Container: {
-        
         paddingTop: mvs(7),
-        marginBottom: mvs(2),
+        marginBottom: mvs(5),
     },
     textInput: {
         color: colors.black,
         textAlignVertical: 'center',
         height: mvs(40),
+        backgroundColor:colors.secondary,
+        borderRadius:mvs(10),
+        paddingHorizontal:mvs(15)
     },
     labelStyle: {
         color: colors.primary,

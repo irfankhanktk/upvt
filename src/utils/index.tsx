@@ -6,7 +6,6 @@ import ImagePicker from 'react-native-image-crop-picker';
 import uuid from 'react-native-uuid';
 import { NavigationProps } from '../types/navigation-types';
 // import Geolocation from 'react-native-geolocation-service';
-import RootStackParamList from '../types/navigation-types/root-stack';
 
 export const horizontalAnimation: any = {
   headerShown: false,
