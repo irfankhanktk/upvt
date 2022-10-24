@@ -35,7 +35,7 @@ const Splash = (props: props) => {
 
   return (
     <View style={{...styles.container}}>
-      <Regular style={styles.welcomeText} label={'Welcome to to-do'}/>
+      <Regular style={styles.welcomeText} label={'UPVT'}/>
     </View>
   );
 };

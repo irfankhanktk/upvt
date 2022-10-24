@@ -11,6 +11,7 @@ import Home from '../screens/home';
 import AddTask from '../screens/add-task';
 import Login from '../screens/login';
 import Signup from '../screens/signup';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator = () => {
@@ -24,6 +25,7 @@ export const RootNavigator = () => {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={horizontalAnimation}>
+        
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />

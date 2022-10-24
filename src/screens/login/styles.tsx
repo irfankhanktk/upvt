@@ -12,7 +12,8 @@ const  styles = StyleSheet.create({
         paddingTop:mvs(100),
     },
     button:{
-        marginTop:mvs(100),
+        marginTop:mvs(30),
+        color:colors.primary
     },
     accountText:{
         color:colors.primary,

@@ -33,8 +33,10 @@ const Login = (props: props) => {
           label={'Password'}
           onChangeText={(str) => setValues({ ...values, password: str })}
           value={values.password} />
-        <PrimaryButton disabled={!values?.email||!values?.password} title={'Login'} onPress={()=>dispatch(onLoginPress(values?.email,values?.password,navigation))} containerStyle={styles.button} />
+            <Medium style={styles.accountText}  label={'Forgot password'}/> 
+        <PrimaryButton disabled={!values?.email||!values?.password} title={'Login'} onPress={()=>dispatch(onLoginPress(values?.email,values?.password,props))} containerStyle={styles.button} />
         <Medium style={styles.accountText} onPress={()=>props?.navigation?.navigate('Signup')} label={'Register an account'}/>
+      
       </KeyboardAvoidScrollview>
     </View>
 

@@ -7,7 +7,7 @@ import storage from '@react-native-firebase/storage';
 import { setUserInfo } from '../../store/reducers/user-reducer';
 import { SERVICES } from '../../utils';
 
-export const createUserWithEmailAndPassword = async (name:string,email:string,password:string) => {
+export const createUserWithEmailAndPassword = async (email:string,password:string) => {
   try {
    const res= await auth().createUserWithEmailAndPassword(email, password);
    console.log('RES: SIGNUP',res);
