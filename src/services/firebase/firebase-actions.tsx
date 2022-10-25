@@ -50,7 +50,7 @@ export const onSignupPress = (data: SignUpData, props: any) => {
             await saveData('users', res?.user?.uid, user);
             SERVICES.setItem('@userId', res?.user?.uid);
             dispatch(setUserInfo(user));
-            SERVICES.resetStack(props, 'Login');
+            SERVICES.resetStack(props, 'Home');
         } catch (error: any) {
             console.log('error in onSignupPress', error);
             Alert.alert('', error,);

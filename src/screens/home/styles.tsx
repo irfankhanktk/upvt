@@ -8,7 +8,7 @@ const  styles = StyleSheet.create({
         backgroundColor:colors.white
     },
     contentContainerStyle:{
-        flex:1,
+        flexGrow:1,
         padding:mvs(20)
     }
 });

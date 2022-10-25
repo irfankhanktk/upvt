@@ -16,10 +16,10 @@ const Home = (props: props) => {
   }, []);
   return (
     <View style={styles.container}>
-      <AppHeader title="To-do List" />
+      <AppHeader title="Home" />
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={[0, 1]} renderItem={renderItem} />
+        data={[0, 1,0, 1,0, 1,0, 1,0, 1]} renderItem={renderItem} />
         <PlusButton onPress={()=>props?.navigation?.navigate('AddTask')} title='Add'/>
     </View>
   );

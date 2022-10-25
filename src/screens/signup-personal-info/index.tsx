@@ -4,14 +4,10 @@ import { View } from 'react-native';
 import { PrimaryButton } from '../../components/atoms/buttons';
 import AppHeader from '../../components/atoms/headers/index';
 import PrimaryInput from '../../components/atoms/inputs';
-import SmallInput from '../../components/atoms/inputs/smallInput';
-import smallInput from '../../components/atoms/inputs/smallInput';
 import { KeyboardAvoidScrollview } from '../../components/atoms/keyboard-avoid-scrollview';
 import ProgressBar from '../../components/atoms/progress-bar';
 import { Row } from '../../components/atoms/row';
-import { colors } from '../../config/colors';
 import { useAppDispatch } from '../../hooks/use-store';
-import { onSignupPress } from '../../services/firebase/firebase-actions';
 import RootStackParamList from '../../types/navigation-types/root-stack';
 import Medium from '../../typography/medium-text';
 import styles from './styles';
@@ -28,7 +24,7 @@ const SignupPersonal = (props: props) => {
   const { navigation } = props;
   const dispatch = useAppDispatch();
   const [progress, setProgress] = React.useState(0);
-  const initial={
+  const initial = {
     firstName: '',
     familyName: '',
     email: '',
@@ -50,8 +46,8 @@ const SignupPersonal = (props: props) => {
   return (
     <View style={styles.container}>
       <AppHeader back title="Sign-up" />
+      <ProgressBar style={styles.progress} value={progress} />
       <KeyboardAvoidScrollview contentContainerStyle={styles.contentContainerStyle}>
-        <ProgressBar value={progress} />
         <>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <PrimaryInput containerStyle={styles.smallButton} label={'First Name'} onChangeText={(str) => setValues({ ...values, firstName: str })} value={values.firstName} />
@@ -78,7 +74,7 @@ const SignupPersonal = (props: props) => {
         <PrimaryButton
           disabled={bool} title={'Next'}
           containerStyle={styles.button}
-          onPress={() => props?.navigation?.navigate('SignupPreferences',values)}
+          onPress={() => props?.navigation?.navigate('SignupPreferences', values)}
         />
         <Medium style={styles.accountText} onPress={props?.navigation?.goBack} label={'Already have an account'} />
       </View>

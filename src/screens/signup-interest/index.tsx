@@ -29,14 +29,14 @@ const SignupInterest = (props: props) => {
   const dispatch = useAppDispatch();
   const [progress, setProgress] = React.useState(0.4);
   const [interests, setInterests] = React.useState<any[]>([
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
-    { title: 'title here ', flag: false },
+    { title: 'song', flag: false },
+    { title: 'fun ', flag: false },
+    { title: 'family', flag: false },
+    { title: 'food', flag: false },
+    { title: 'girls trip', flag: false },
+    { title: 'boys trip', flag: false },
+    { title: 'mix trip', flag: false },
+    { title: 'single', flag: false },
   ]);
  
   React.useEffect(() => {

@@ -9,7 +9,7 @@ const  styles = StyleSheet.create({
     },
     contentContainerStyle:{
         paddingHorizontal:mvs(22),
-        paddingTop:mvs(30),
+        paddingTop:mvs(10),
     },
     button:{
         marginTop:mvs(100),
@@ -27,6 +27,9 @@ const  styles = StyleSheet.create({
         justifyContent:'flex-end',
         marginTop:mvs(100),
         paddingHorizontal:mvs(22),
+    },
+    progress:{
+        marginVertical:mvs(20),
     }
   
 });
