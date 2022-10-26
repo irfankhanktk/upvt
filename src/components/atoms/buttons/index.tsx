@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     //    backgroundColor:colors.primary,
        width:mvs(50),
        height:mvs(50),
-       borderRadius:mvs(50/2),
+       borderRadius:mvs(25),
     },
     plusText:{
         color:colors.white,

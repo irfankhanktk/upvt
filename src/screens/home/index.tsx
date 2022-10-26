@@ -19,7 +19,7 @@ const Home = (props: props) => {
       <AppHeader title="Home" />
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={[0, 1,0, 1,0, 1,0, 1,0, 1]} renderItem={renderItem} />
+        data={[0, 1,0,8,9,0]} renderItem={renderItem} />
         <PlusButton onPress={()=>props?.navigation?.navigate('AddTask')} title='Add'/>
     </View>
   );

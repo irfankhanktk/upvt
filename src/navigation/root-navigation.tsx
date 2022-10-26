@@ -13,6 +13,7 @@ import Login from '../screens/login';
 import SignupPersonal from '../screens/signup-personal-info';
 import SignupPreferences from '../screens/signup-preferences';
 import SignupInterest from '../screens/signup-interest';
+import AddTrips from '../screens/add-trips';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -25,7 +26,7 @@ export const RootNavigator = () => {
         barStyle={Platform?.OS === 'ios' ? 'default' : 'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="AddTrips"
         screenOptions={horizontalAnimation}>
         
         <Stack.Screen name="Splash" component={Splash} />
@@ -35,6 +36,7 @@ export const RootNavigator = () => {
         <Stack.Screen name="SignupInterest" component={SignupInterest} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="AddTask" component={AddTask} />
+        <Stack.Screen name="AddTrips" component={AddTrips} />
       </Stack.Navigator>
     </SafeAreaView>
   );

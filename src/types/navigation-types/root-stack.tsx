@@ -8,5 +8,6 @@ type RootStackParamList = {
   SignupPreferences: SignUpData;
   SignupInterest: SignUpData;
   AddTask:undefined,
+  AddTrips:undefined,
 };
 export default RootStackParamList;

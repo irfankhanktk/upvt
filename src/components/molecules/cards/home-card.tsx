@@ -45,7 +45,7 @@ const HomeCard = ({
             <PrimaryButton containerStyle={{height:mvs(25),width:mvs(100)}} title='Buy'/>
           </Row>
         </View>
-      </Row>
+      </Row> 
     </View>
   )
 }
