@@ -6,7 +6,7 @@ import Rnfirestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { setUserInfo } from '../../store/reducers/user-reducer';
 import { SERVICES } from '../../utils';
-
+export const getCurrentUserId=()=>auth()?.currentUser?.uid;
 export const createUserWithEmailAndPassword = async (email:string,password:string) => {
   try {
    const res= await auth().createUserWithEmailAndPassword(email, password);
@@ -57,7 +57,7 @@ export const uploadFile = async (image: string) => {
     const url: string = await storageRef.getDownloadURL();
     return url;
   } catch (error) {
-    throw error;
+    throw SERVICES._returnError(error);
   }
 };
 
@@ -77,7 +77,7 @@ export async function insertBatch(collection = 'events', array: any[] = [], is_d
     return batch.commit();
   } catch (error) {
     console.log('error:', error);
-    throw error;
+    throw SERVICES._returnError(error);
   }
 }
 export const saveData = async (
@@ -93,7 +93,7 @@ export const saveData = async (
     return res;
   } catch (error) {
     console.log('error::', error);
-    throw error;
+    throw SERVICES._returnError(error);
   }
 };
 export const updateDocument = async (
@@ -108,7 +108,7 @@ export const updateDocument = async (
     return res;
   } catch (error) {
     console.log('error::', error);
-    throw error;
+    throw SERVICES._returnError(error);
   }
 };
 export const getData = (collection: string, doc: string) => {
@@ -117,12 +117,12 @@ export const getData = (collection: string, doc: string) => {
     .doc(doc)
     .get()
     .then(function (doc) {
-      if (doc.exists) {
+      if (doc.exists && doc.data()) {
         return doc.data();
       } else {
-        return 'user does not exists';
+        throw 'user does not exists';
       }
-    }).catch(error=>{throw error});
+    }).catch(error=>{ throw SERVICES._returnError(error)});
 };
 export const getDatabyKey = async (
   collection: string,
@@ -139,7 +139,7 @@ export const getDatabyKey = async (
       return [];
     }
   } catch (error) {
-    throw error;
+    throw SERVICES._returnError(error);
   }
 };
 export const getAllOfCollection = async (collection: string) => {

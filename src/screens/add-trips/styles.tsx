@@ -27,9 +27,28 @@ const  styles = StyleSheet.create({
         justifyContent:'flex-end',
         marginTop:mvs(100),
         paddingHorizontal:mvs(22),
+        paddingBottom:mvs(20)
     },
     progress:{
         marginVertical:mvs(20),
+    },
+    plus:{
+        fontSize:mvs(45),
+    },
+    image:{
+        height:'100%',
+        width:'100%',
+        borderRadius:mvs(15),
+    },
+    imageContainer:{
+        height:mvs(200),
+        borderRadius:mvs(15),
+        overflow:'hidden',
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor:colors.white,
+        marginVertical:mvs(10),
+        ...colors.shadow
     }
   
 });

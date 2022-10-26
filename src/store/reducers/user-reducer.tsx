@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-const initialState = {
-  userInfo: null,
-  interests:[],
+import { UserData } from '../../types/entities-types'
+type State={
+  userInfo?:UserData|null,
+}
+const initialState:State = {
+  userInfo:null,
 }
 
 export const userSlice = createSlice({
@@ -11,9 +13,6 @@ export const userSlice = createSlice({
   reducers: {
     setUserInfo: (state, action) => {
       state.userInfo = action.payload
-    },
-    setInterests: (state, action) => {
-      state.interests = action.payload
     },
   },
 })

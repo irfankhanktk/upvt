@@ -5,7 +5,9 @@ export type Theme ={
     colors: typeof colors
   }
 
-  export type SignUpData ={
+  export type UserData ={
+    id?:string,
+    userId?:string,
     firstName?: string,
     familyName?: string,
     email: string,
@@ -19,5 +21,18 @@ export type Theme ={
     travelExpense?: string,
     travelWith?: string,
     interests?:string[]
+
+  }
+  export type TripData ={
+    id?:string,
+    userId?:string,
+    tripDestination?: string,
+    destination?: string,
+    vehicle?: string,
+    hotelName?: string,
+    hotelUrl?: string,
+    description?: string,
+    tripCost?: string,
+    tripImage?: string,
 
   }

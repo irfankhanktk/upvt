@@ -4,6 +4,7 @@ import { Complete, Like } from '../../../assets/icons';
 import { IMAGES } from '../../../assets/images';
 import { colors } from '../../../config/colors';
 import { mvs } from '../../../config/metrices';
+import { TripData } from '../../../types/entities-types';
 import Bold from '../../../typography/bold-text';
 import Medium from '../../../typography/medium-text';
 import Regular from '../../../typography/regular-text';
@@ -11,18 +12,15 @@ import { PrimaryButton } from '../../atoms/buttons';
 import { Row } from '../../atoms/row';
 type props = {
   style?: StyleProp<TextStyle>
-  title?: string
-  time?: string
-  description?: string
-  isComplete?: boolean
+ 
 }
 const HomeCard = ({
   style,
-  time = '04:00 pm',
-  title = 'task title',
-  description = 'Here is description',
-  isComplete = false,
-}: props) => {
+  tripDestination,
+  tripCost,
+  description,
+
+}:TripData&props ) => {
   return (
     <View style={[styles.container]}>
       <Row>
@@ -30,19 +28,19 @@ const HomeCard = ({
         <View style={{ flex: 1, padding: mvs(10),justifyContent:'space-between' }}>
           <Row>
             <Medium style={[styles.title]} label={'Location'} />
-            <Regular style={[styles.value]} label={'Islamabad'} />
+            <Regular style={[styles.value]} label={tripDestination} />
           </Row>
           <Row>
             <Medium style={[styles.title]} label={'Total Cost'} />
-            <Regular style={[styles.value]} label={'45 $'} />
+            <Regular style={[styles.value]} label={`${tripCost} $`} />
           </Row>
           <Row>
             <Medium style={[styles.title]} label={'Description'} />
-            <Regular style={[styles.value]} numberOfLines={2} label={'I travelled by car jsjdjsjkjsd jksdjkfjsk jkjsd '} />
+            <Regular style={[styles.value]} numberOfLines={2} label={description} />
           </Row>
           <Row contentContainerStyle={{alignItems:'center'}}>
             <Like height={mvs(20)} width={mvs(20)}/>
-            <PrimaryButton containerStyle={{height:mvs(25),width:mvs(100)}} title='Buy'/>
+            <PrimaryButton onPress={()=>{}} containerStyle={{height:mvs(25),width:mvs(100)}} title='Buy'/>
           </Row>
         </View>
       </Row> 

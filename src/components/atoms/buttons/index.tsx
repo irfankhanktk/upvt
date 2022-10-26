@@ -19,7 +19,7 @@ export const PlusButton = (props: props) => {
     } = props;
     return (
         <TouchableOpacity style={styles.plusContainer} onPress={onPress}>
-            <Regular style={styles.plusText} label={title}/>
+            <Regular style={styles.plusText} label={'+'}/>
         </TouchableOpacity>
     )
 };
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
        position:'absolute',
        bottom:mvs(40),
        ...colors.shadow,
+       backgroundColor:colors.primary,
        right:mvs(20),
        justifyContent:'center',
        alignItems:'center',
@@ -57,6 +58,7 @@ const styles = StyleSheet.create({
     },
     plusText:{
         color:colors.white,
+        fontSize:mvs(20)
     },
     primaryContainer:{
        justifyContent:'center',

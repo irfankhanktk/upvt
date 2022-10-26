@@ -9,6 +9,8 @@ import Config from 'react-native-config';
 import { useAppDispatch, useAppSelector } from './../../hooks/use-store';
 import Regular from '../../typography/regular-text';
 import { SERVICES } from '../../utils';
+import { STORAGEKEYS } from '../../config/constants';
+import { getUserData } from '../../services/firebase/firebase-actions';
 
 const Splash = (props: props) => {
   const {navigation} =props;
@@ -19,11 +21,11 @@ const Splash = (props: props) => {
 
     (async()=>{
       let screen:'Login'|'Home' = 'Login';
-      SERVICES.getItem('@user').then((userId:any)=>{
+      SERVICES.getItem(STORAGEKEYS.userId).then((userId:any)=>{
       
         if(userId){
            screen='Home';
-            // getUserData();
+           dispatch(getUserData(userId));
         }
         setTimeout(() => {
           navigation?.replace(screen);

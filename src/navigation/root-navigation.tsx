@@ -26,7 +26,7 @@ export const RootNavigator = () => {
         barStyle={Platform?.OS === 'ios' ? 'default' : 'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="AddTrips"
+        initialRouteName="Splash"
         screenOptions={horizontalAnimation}>
         
         <Stack.Screen name="Splash" component={Splash} />
@@ -35,7 +35,7 @@ export const RootNavigator = () => {
         <Stack.Screen name="SignupPreferences" component={SignupPreferences} />
         <Stack.Screen name="SignupInterest" component={SignupInterest} />
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="AddTask" component={AddTask} />
+        {/* <Stack.Screen name="AddTask" component={AddTask} /> */}
         <Stack.Screen name="AddTrips" component={AddTrips} />
       </Stack.Navigator>
     </SafeAreaView>

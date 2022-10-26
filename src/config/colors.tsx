@@ -15,7 +15,7 @@ export const colors = {
       height: 2,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowRadius: 2.84,
 
     elevation: 3,
   },
