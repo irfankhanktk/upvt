@@ -1,4 +1,7 @@
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { View } from 'react-native';
 import { profileactive as User } from '../../assets/icons';
@@ -11,10 +14,13 @@ import { useAppDispatch, useAppSelector } from '../../hooks/use-store';
 import { useTrips } from '../../hooks/use-trips';
 import { onLogout } from '../../services/firebase/firebase-actions';
 import TabParamList from '../../types/navigation-types/bottom-tab';
+import RootStackParamList from '../../types/navigation-types/root-stack';
 import Medium from '../../typography/medium-text';
 import styles from './styles';
-type props = NativeStackScreenProps<TabParamList, 'Profile'>;
-
+type props = CompositeScreenProps<
+  BottomTabScreenProps<TabParamList, 'Profile'>,
+  StackScreenProps<RootStackParamList>
+>;
 const Profile = (props: props) => {
   const { navigation } = props;
   const userInfo = useAppSelector(s => s?.user?.userInfo);

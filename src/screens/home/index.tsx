@@ -1,4 +1,6 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { FlatList, View } from 'react-native';
 import { PlusButton } from '../../components/atoms/buttons';
@@ -7,8 +9,12 @@ import HomeCard from '../../components/molecules/cards/home-card';
 import { useAppSelector } from '../../hooks/use-store';
 import { useTrips } from '../../hooks/use-trips';
 import TabParamList from '../../types/navigation-types/bottom-tab';
+import RootStackParamList from '../../types/navigation-types/root-stack';
 import styles from './styles';
-type props = NativeStackScreenProps<TabParamList, 'Home'>;
+type props = CompositeScreenProps<
+  BottomTabScreenProps<TabParamList, 'Home'>,
+  StackScreenProps<RootStackParamList>
+>;
 
 const Home = (props: props) => {
   const { navigation } = props;
