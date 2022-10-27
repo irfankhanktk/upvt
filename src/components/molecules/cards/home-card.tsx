@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, StyleProp, TextStyle, StyleSheet, Image } from 'react-native';
-import { Complete, Like } from '../../../assets/icons';
+import {  Like } from '../../../assets/icons';
 import { IMAGES } from '../../../assets/images';
 import { colors } from '../../../config/colors';
 import { mvs } from '../../../config/metrices';
@@ -19,12 +19,13 @@ const HomeCard = ({
   tripDestination,
   tripCost,
   description,
+  tripImage,
 
 }:TripData&props ) => {
   return (
     <View style={[styles.container]}>
       <Row>
-        <Image style={{ height: mvs(140), width: '45%', borderRadius: mvs(20)}} source={IMAGES.homePic} />
+        <Image style={{ height: mvs(140), width: '45%', borderRadius: mvs(20)}} source={{uri:tripImage}} />
         <View style={{ flex: 1, padding: mvs(10),justifyContent:'space-between' }}>
           <Row>
             <Medium style={[styles.title]} label={'Location'} />

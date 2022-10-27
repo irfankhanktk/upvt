@@ -14,6 +14,9 @@ import SignupPersonal from '../screens/signup-personal-info';
 import SignupPreferences from '../screens/signup-preferences';
 import SignupInterest from '../screens/signup-interest';
 import AddTrips from '../screens/add-trips';
+import Tab from './bottom-tab-navigation';
+import SavedTrips from '../screens/saved-trips';
+import UpvotedTrips from '../screens/upvoted-trips';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,9 +37,11 @@ export const RootNavigator = () => {
         <Stack.Screen name="SignupPersonal" component={SignupPersonal} />
         <Stack.Screen name="SignupPreferences" component={SignupPreferences} />
         <Stack.Screen name="SignupInterest" component={SignupInterest} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Tab" component={Tab} />
         {/* <Stack.Screen name="AddTask" component={AddTask} /> */}
         <Stack.Screen name="AddTrips" component={AddTrips} />
+        <Stack.Screen name="SavedTrips" component={SavedTrips} />
+        <Stack.Screen name="UpvotedTrips" component={UpvotedTrips} />
       </Stack.Navigator>
     </SafeAreaView>
   );

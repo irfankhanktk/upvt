@@ -1,5 +1,6 @@
+import moment from "moment";
 import { Alert } from "react-native";
-import { createUserWithEmailAndPassword, saveData, signInWithEmailAndPassword, uploadFile } from ".";
+import { createUserWithEmailAndPassword, logoutUser, saveData, signInWithEmailAndPassword, uploadFile } from ".";
 import { COLLECTIONS, STORAGEKEYS } from "../../config/constants";
 import { AppDispatch, RootState } from "../../store";
 import { setUserInfo } from "../../store/reducers/user-reducer";
@@ -19,7 +20,7 @@ export const onLoginPress = (email: string, password: string, props: NavigationP
             const response = await getData('users', res?.user?.uid);
             SERVICES.setItem(STORAGEKEYS?.userId, res?.user?.uid);
             dispatch(setUserInfo(response));
-            SERVICES.resetStack(props, 'Home');
+            SERVICES.resetStack(props, 'Tab');
 
         } catch (error: any) {
             console.log('error in onLoginPress', error);
@@ -51,7 +52,7 @@ export const onSignupPress = (data: UserData, props: any) => {
             await saveData('users', res?.user?.uid, user);
             SERVICES.setItem(STORAGEKEYS?.userId, res?.user?.uid);
             dispatch(setUserInfo(user));
-            SERVICES.resetStack(props, 'Home');
+            SERVICES.resetStack(props, 'Tab');
         } catch (error: any) {
             console.log('error in onSignupPress', error);
             Alert.alert('', error,);
@@ -64,7 +65,9 @@ export const onAddTripPress = (data: TripData, props: any) => {
             const userId=getState()?.user?.userInfo?.userId;
             if(data?.tripImage){
                 const uri=await uploadFile(data?.tripImage);
-                await saveData(COLLECTIONS.trips,userId,{...data,tripImage:uri});
+                const uuid=SERVICES.getUUID();
+            const userId=getState()?.user?.userInfo?.userId;
+            await saveData(COLLECTIONS.trips,uuid,{...data,tripImage:uri,createdAt:moment().format('YYYY-MM-DD HH:mm'),userId:userId});
                 Alert.alert('Trip Added Sucessfully')
                 props?.navigation?.goBack();
             }else{
@@ -84,6 +87,19 @@ export const getUserData =  (userId:string) => {
             dispatch(setUserInfo(res));
         } catch (error: any) {
             console.log('error in onAddTaskPress', error);
+            Alert.alert('', error,);
+        }
+    }
+}
+export const onLogout=(props:any)=>{
+    return async (dispatch: AppDispatch, getState: () => RootState) => {
+        try {
+            await logoutUser();
+            SERVICES?.resetStack(props,'Login');
+            SERVICES?.clear();
+            dispatch(setUserInfo(null));
+        } catch (error: any) {
+            console.log('error in onLogout', error);
             Alert.alert('', error,);
         }
     }

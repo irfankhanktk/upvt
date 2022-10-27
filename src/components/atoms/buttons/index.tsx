@@ -40,6 +40,23 @@ export const PrimaryButton = (props: props) => {
         </TouchableOpacity>
     )
 };
+export const ProfileButton = (props: props) => {
+    const {
+        onPress,
+        title,
+        disabled,
+        loading,
+        textStyle,
+        containerStyle,
+    } = props;
+    return (
+        <TouchableOpacity disabled={disabled||loading} style={[styles.profileContainer,containerStyle]} onPress={onPress}>
+            {loading?
+            <Loader/>
+            :<Regular style={[styles.profileText,textStyle]} label={title}/>}
+        </TouchableOpacity>
+    )
+};
 
 
 const styles = StyleSheet.create({
@@ -70,5 +87,20 @@ const styles = StyleSheet.create({
     },
     primaryText:{
         color:colors.white,
+    },
+    profileContainer:{
+       justifyContent:'flex-end',
+    //    alignItems:'center',
+       backgroundColor:colors.white,
+       paddingHorizontal:mvs(22),
+       width:'100%',
+       height:mvs(50),
+       borderRadius:mvs(15),
+       borderBottomWidth:0.7,
+       borderBottomColor:colors.primary
+    },
+    profileText:{
+        color:colors.primary,
+        fontSize:mvs(15)
     }
 })

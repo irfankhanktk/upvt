@@ -6,31 +6,31 @@ import Rnfirestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { setUserInfo } from '../../store/reducers/user-reducer';
 import { SERVICES } from '../../utils';
-export const getCurrentUserId=()=>auth()?.currentUser?.uid;
-export const createUserWithEmailAndPassword = async (email:string,password:string) => {
+export const getCurrentUserId = () => auth()?.currentUser?.uid;
+export const createUserWithEmailAndPassword = async (email: string, password: string) => {
   try {
-   const res= await auth().createUserWithEmailAndPassword(email, password);
-   console.log('RES: SIGNUP',res);
-   
-   return res;
+    const res = await auth().createUserWithEmailAndPassword(email, password);
+    console.log('RES: SIGNUP', res);
+
+    return res;
   } catch (error: any) {
     if (error.code === 'auth/email-already-in-use') {
       console.log('That email address is already in use!');
-    }else if (error.code === 'auth/invalid-email') {
+    } else if (error.code === 'auth/invalid-email') {
       console.log('That email address is invalid!');
     }
     throw SERVICES._returnError(error);
   }
 }
-export const signInWithEmailAndPassword = async (email:string,password:string) => {
+export const signInWithEmailAndPassword = async (email: string, password: string) => {
 
   try {
-    const res=await auth().signInWithEmailAndPassword(email, password);
+    const res = await auth().signInWithEmailAndPassword(email, password);
     return res;
   } catch (error: any) {
     if (error.code === 'auth/email-already-in-use') {
       console.log('That email address is already in use!');
-    }else if (error.code === 'auth/invalid-email') {
+    } else if (error.code === 'auth/invalid-email') {
       console.log('That email address is invalid!');
     }
     throw SERVICES._returnError(error);
@@ -122,7 +122,7 @@ export const getData = (collection: string, doc: string) => {
       } else {
         throw 'user does not exists';
       }
-    }).catch(error=>{ throw SERVICES._returnError(error)});
+    }).catch(error => { throw SERVICES._returnError(error) });
 };
 export const getDatabyKey = async (
   collection: string,
@@ -258,6 +258,15 @@ export const filterCollections = async (
       data?.push(documentSnapshot.data());
     });
     return data;
+  } catch (error) {
+    throw new Error(SERVICES._returnError(error));
+  }
+};
+export const logoutUser = async () => {
+  try {
+        await auth().signOut();
+     
+
   } catch (error) {
     throw new Error(SERVICES._returnError(error));
   }

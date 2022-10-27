@@ -20,11 +20,11 @@ const Splash = (props: props) => {
   React.useEffect(() => {
 
     (async()=>{
-      let screen:'Login'|'Home' = 'Login';
+      let screen:'Login'|'Tab' = 'Login';
       SERVICES.getItem(STORAGEKEYS.userId).then((userId:any)=>{
       
         if(userId){
-           screen='Home';
+           screen='Tab';
            dispatch(getUserData(userId));
         }
         setTimeout(() => {

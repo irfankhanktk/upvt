@@ -46,11 +46,14 @@ export const horizontalAnimation: any = {
 export const SERVICES = {
   resetStack: (props: NavigationProps, routeName: string,params?:object) => {
     props?.navigation.dispatch(
-      CommonActions.navigate({
-        name: routeName,
-        params
-      })
-    );
+      CommonActions.reset({
+        index: 1,
+        routes: [
+          { name: routeName ,
+            params,
+          }
+        ],
+      }))
   },
   getItem: async (key: string) => {
     try {
@@ -64,6 +67,14 @@ export const SERVICES = {
   setItem: async (key: string, data: string) => {
     try {
       await AsyncStorage.setItem(key, data);
+    } catch (error) {
+      console.log('error=>', error);
+      return null;
+    }
+  },
+  clear: async () => {
+    try {
+      await AsyncStorage.clear();
     } catch (error) {
       console.log('error=>', error);
       return null;

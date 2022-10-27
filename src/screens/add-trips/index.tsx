@@ -32,13 +32,13 @@ const AddTrips = (props: props) => {
   const [progress, setProgress] = React.useState(0);
   const initial = {
     tripDestination: '',
-    destination: '',
+    origin: '',
     vehicle: '',
     hotelName: '',
     hotelUrl: '',
     description: '',
     tripCost: '',
-    tripImage: '',
+    tripImage: 'https://',
 
   }
   const [categories, setCategories] = React.useState<any[]>([
@@ -52,14 +52,8 @@ const AddTrips = (props: props) => {
     { title: 'Other ', flag: false },
   ]);
   const [values, setValues] = React.useState(initial);
-  const bool = !values?.tripDestination || !values?.destination || !values.vehicle || !values.hotelName || !values.hotelUrl || !values.tripCost || !values.tripImage
-  React.useEffect(() => {
-    if (bool) {
-      setProgress(0)
-    } else {
-      setProgress(0.4)
-    }
-  }, [bool]);
+  const bool = !values?.tripDestination || !values?.origin || !values.vehicle || !values.hotelName || !values.hotelUrl || !values.tripCost || !values.tripImage
+
 
   const onGallery=async()=>{
     try {
@@ -76,7 +70,7 @@ const AddTrips = (props: props) => {
       <KeyboardAvoidScrollview contentContainerStyle={styles.contentContainerStyle}>
         <>
           <PrimaryInput label={'Where did you go?'} onChangeText={(str) => setValues({ ...values, tripDestination: str })} value={values.tripDestination} />
-          <PrimaryInput label={'Where did you from?'} onChangeText={(str) => setValues({ ...values, destination: str })} value={values.destination} />
+          <PrimaryInput label={'Where did you from?'} onChangeText={(str) => setValues({ ...values, origin: str })} value={values.origin} />
           <PrimaryInput label={'How did you get there by?(car, train, airoplane, etc)'} onChangeText={(str) => setValues({ ...values, vehicle: str })} value={values.vehicle} />
           <PrimaryInput label={'Which hotel did you use?'} onChangeText={(str) => setValues({ ...values, hotelName: str })} value={values.hotelName} />
           <PrimaryInput label={'URL of booked hotel/housing?'} onChangeText={(str) => setValues({ ...values, hotelUrl: str })} value={values.hotelUrl} />
@@ -92,11 +86,6 @@ const AddTrips = (props: props) => {
           console.log('itemss=>', items);
           setCategories(items)
           if (categories?.some(x => x?.flag)) {
-
-            setProgress(1)
-          } else {
-            setProgress(0.7)
-
           }
         }} items={categories} />
       </KeyboardAvoidScrollview>

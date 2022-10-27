@@ -3,14 +3,15 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import { PlusButton } from '../../components/atoms/buttons';
 import AppHeader from '../../components/atoms/headers/index';
-import HomeCard from '../../components/molecules/cards/home-card';
+import TripCard from '../../components/molecules/cards/trip-card';
 import { useAppSelector } from '../../hooks/use-store';
 import { useTrips } from '../../hooks/use-trips';
 import TabParamList from '../../types/navigation-types/bottom-tab';
+import RootStackParamList from '../../types/navigation-types/root-stack';
 import styles from './styles';
-type props = NativeStackScreenProps<TabParamList, 'Home'>;
+type props = NativeStackScreenProps<RootStackParamList, 'UpvotedTrips'>;
 
-const Home = (props: props) => {
+const UpvotedTrips = (props: props) => {
   const { navigation } = props;
   const userInfo=useAppSelector(s=>s?.user?.userInfo);
   const trips=useTrips();
@@ -18,16 +19,18 @@ const Home = (props: props) => {
   
 
   const renderItem = React.useCallback(({ item, index }: any) => {
-    return <HomeCard {...item} />;
+    return <TripCard {...item} />;
   }, []);
   return (
     <View style={styles.container}>
-      <AppHeader title="Home" />
+      <AppHeader back title="Upvoted-Trips" />
       <FlatList
+        numColumns={2}
+        columnWrapperStyle={{justifyContent:'space-between'}}
         contentContainerStyle={styles.contentContainerStyle}
         data={trips} renderItem={renderItem} />
         <PlusButton onPress={()=>props?.navigation?.navigate('AddTrips')} title='Add'/>
     </View>
   );
 };
-export default Home;
+export default UpvotedTrips;

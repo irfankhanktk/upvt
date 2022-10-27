@@ -27,12 +27,13 @@ export type Theme ={
     id?:string,
     userId?:string,
     tripDestination?: string,
-    destination?: string,
     vehicle?: string,
     hotelName?: string,
     hotelUrl?: string,
     description?: string,
     tripCost?: string,
     tripImage?: string,
+    createdAt?: string,
+    origin?:string,
 
   }
