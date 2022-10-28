@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { View } from 'react-native';
+import { View,Image } from 'react-native';
 import RootStackParamList from '../../types/navigation-types/root-stack';
 import styles from './styles';
 type props = NativeStackScreenProps<RootStackParamList, 'Splash'>;
@@ -11,6 +11,8 @@ import Regular from '../../typography/regular-text';
 import { SERVICES } from '../../utils';
 import { STORAGEKEYS } from '../../config/constants';
 import { getUserData } from '../../services/firebase/firebase-actions';
+// import { Image } from 'react-native-svg';
+import { IMAGES } from '../../assets/images';
 
 const Splash = (props: props) => {
   const {navigation} =props;
@@ -37,7 +39,7 @@ const Splash = (props: props) => {
 
   return (
     <View style={{...styles.container}}>
-      <Regular style={styles.welcomeText} label={'UPVT'}/>
+      <Image  source={IMAGES.splashPic} style={styles.splashpic}/>
     </View>
   );
 };
